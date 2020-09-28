@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './index.css';
+
+import CartContainer from './Components/CartContainer';
+import Navbar from './Components/Navbar'
+import {createStore} from 'redux'
+import {decreaseItem, increaseItem} from './Actions/Itemes'
+import allReducers from './Reducers'
+
+const initialStore = {
+  count: 10, 
+}
+
+
+//reducer
+function reducers (state, action) {
+  return state;
+}
+
+
+const store = createStore(allReducers, initialStore); 
+store.dispatch(increaseItem())
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar cart ={store.getState()}/>
+      <CartContainer />
     </div>
   );
 }
