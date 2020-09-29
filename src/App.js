@@ -3,31 +3,33 @@ import './index.css';
 
 import CartContainer from './Components/CartContainer';
 import Navbar from './Components/Navbar'
-import {createStore} from 'redux'
-import {decreaseItem, increaseItem} from './Actions/Itemes'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'; 
+
 import allReducers from './Reducers'
+import CartItems from './Data/CartItems'; 
+
+
 
 const initialStore = {
-  count: 10, 
+  cart : CartItems, 
+  total: 330, 
+  amount: 7,
 }
 
 
-//reducer
-function reducers (state, action) {
-  return state;
-}
-
-
-const store = createStore(allReducers, initialStore); 
-store.dispatch(increaseItem())
-
+const store = createStore (
+  allReducers, 
+  initialStore, 
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+); 
 
 function App() {
   return (
-    <div className="App">
-      <Navbar cart ={store.getState()}/>
+    <Provider store={store}>
+      <Navbar />
       <CartContainer />
-    </div>
+    </Provider>
   );
 }
 

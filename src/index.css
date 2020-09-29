@@ -27,5 +27,36 @@
   font-size: 2rem;
   color: rgb(51, 51, 51);
   border-radius: 50%;
+}
 
+.cart_image {
+  width: 60%;
+}
+
+.modefy_amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+.modefy_amount .fa {
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modefy_amount .amount {
+  margin: 0 10px 0 10px;
+}
+.change_item {
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cart_footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
 }

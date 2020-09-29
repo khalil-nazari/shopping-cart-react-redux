@@ -1,9 +1,10 @@
 import React from 'react'
+import { connect, useSelector } from 'react-redux'; 
 
-function Navbar({cart}) {
-    const {count} = cart; 
+function Navbar({amount}) {
+  
     return (
-        <div>
+        <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container">
                     <a className="navbar-brand font-weight-bold" href="#">ReactRedux</a>
@@ -22,13 +23,18 @@ function Navbar({cart}) {
                     
                     <div className="shopping_cart">
                         <i className="fa fa-cart-arrow-down"></i>
-                        <span className="counter">{count}</span>
+                        <span className="counter">{amount}</span>
                     </div>
                     </div>
                 </div>
             </nav>
-        </div>
+        </>
     ); 
 }
 
-export default Navbar
+
+/** Get data from the global store */
+const mapStateToProps = (state) => {
+    return {amount: state.amount, cart: state.cart};
+}
+export default connect(mapStateToProps) (Navbar)
