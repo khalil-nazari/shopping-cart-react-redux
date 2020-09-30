@@ -7,20 +7,10 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'; 
 
 import allReducers from './Reducers'
-import CartItems from './Data/CartItems'; 
-
-
-
-const initialStore = {
-  cart : CartItems, 
-  total: 330, 
-  amount: 7,
-}
 
 
 const store = createStore (
   allReducers, 
-  initialStore, 
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ); 
 

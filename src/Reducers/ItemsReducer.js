@@ -1,8 +1,14 @@
 import { act } from 'react-dom/test-utils'
 import {DECREASE, INCREASE, CLEAR_CART, REMOVE, GET_TOTALS} from '../Actions/Actions'
+import CartItems from '../Data/CartItems'; 
 
+const initialStore = {
+    cart : CartItems, 
+    total:0, 
+    amount: 0,
+}
 
-const ItemReducer = (state, action) => {
+const ItemReducer = (state = initialStore, action) => {
 
     if(action.type === CLEAR_CART) {
         return { 
@@ -62,16 +68,18 @@ const ItemReducer = (state, action) => {
 
         
         let {total, amount} = state.cart.reduce((cartTotal, cartItem) => {
-            
+            // price and item amount from cart 
             const {price, amount} = cartItem;
-            console.log(price, amount)
-            // cartItem.amount += amount;
+            
+            // add to reduce object
+            cartTotal.amount += amount;
+            cartTotal.total += price*amount; 
             return cartTotal;
         }, {
             total: 0, 
             amount: 0
         })
-
+       total = parseFloat(total.toFixed(2));
         return {
             ...state, 
             amount, 
